@@ -22,10 +22,11 @@ public class Player : MonoBehaviour
 
     #region Fields
 
-    [SerializeField] private Transform pointBallSpawner;
-    [SerializeField] private float     rotationSpeed;
-    [SerializeField] private float     forceToBall;
-    [SerializeField] private int       timeToSpawnEachBallInSeconds;
+    [SerializeField] private Camera camera;
+    [SerializeField] private float  distanceSpawnerObject;
+    [SerializeField] private float  rotationSpeed;
+    [SerializeField] private float  forceToBall;
+    [SerializeField] private int    timeToSpawnEachBallInSeconds;
 
     private Vector2   startTouchPosition;
     private bool      isDragging = false;
@@ -114,6 +115,13 @@ public class Player : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (camera != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(camera.transform.position, camera.transform.position + camera.transform.forward * distanceSpawnerObject);
+            Gizmos.color = Color.green;
+            Gizmos.DrawSphere(camera.transform.position + camera.transform.forward * distanceSpawnerObject, 0.1f);
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -140,8 +148,8 @@ public class Player : MonoBehaviour
         }
 
         // TODO: Shoot Object
-        ball.SetPosition(pointBallSpawner.position);
-        ball.Shoot(transform.forward, forceToBall);
+        ball.SetPosition(camera.transform.position + camera.transform.forward * distanceSpawnerObject);
+        ball.Shoot(camera.transform.forward, forceToBall);
         _coroutine = null;
     }
 
