@@ -4,6 +4,7 @@ Yêu cầu:
   - Các quả bóng có thể va chạm với nhau và thành màn hình và nảy qua lại. Các quả bóng khi đập vào thành màn hình sẽ tự huỷ sau 3 giây.
   - Mỗi quả bóng khi tự huỷ sẽ sinh ra một vụ nổ đẩy các quả bóng trong bán kính 2 Unity unit ra xung quanh. Tâm vụ nổ tính từ tâm quả bóng tự huỷ. Lực nổ tự quy định.
   - Sử dụng Object Pooling.
+
 Tiêu chí đánh giá bài test:
   - Kiến thức về tối ưu performance cho mobile.
   - Áp dụng Object Pooling đúng cách.
